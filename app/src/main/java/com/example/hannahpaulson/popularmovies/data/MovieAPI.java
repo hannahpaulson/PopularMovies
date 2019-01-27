@@ -8,4 +8,7 @@ import retrofit2.http.GET;
 public interface MovieAPI {
     @GET("movie/popular?api_key=")
     Call<Results> popularMovies();
+
+    @GET("movie/top_rated?api_key=")
+    Call<Results> highestRated();
 }
