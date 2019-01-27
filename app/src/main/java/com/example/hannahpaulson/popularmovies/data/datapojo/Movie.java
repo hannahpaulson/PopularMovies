@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Movies {
+public class Movie {
 
     @SerializedName("vote_count")
     @Expose
@@ -18,16 +18,16 @@ public class Movies {
     private Boolean video;
     @SerializedName("vote_average")
     @Expose
-    private Integer voteAverage;
+    private Float voteAverage;
     @SerializedName("title")
     @Expose
     private String title;
     @SerializedName("popularity")
     @Expose
-    private Integer popularity;
+    private Float popularity;
     @SerializedName("poster_path")
     @Expose
-    private Object posterPath;
+    private String posterPath;
     @SerializedName("original_language")
     @Expose
     private String originalLanguage;
@@ -74,11 +74,11 @@ public class Movies {
         this.video = video;
     }
 
-    public Integer getVoteAverage() {
+    public float getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(Integer voteAverage) {
+    public void setVoteAverage(Float voteAverage) {
         this.voteAverage = voteAverage;
     }
 
@@ -90,19 +90,19 @@ public class Movies {
         this.title = title;
     }
 
-    public Integer getPopularity() {
+    public Float getPopularity() {
         return popularity;
     }
 
-    public void setPopularity(Integer popularity) {
+    public void setPopularity(Float popularity) {
         this.popularity = popularity;
     }
 
-    public Object getPosterPath() {
+    public String getPosterPath() {
         return posterPath;
     }
 
-    public void setPosterPath(Object posterPath) {
+    public void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
     }
 
