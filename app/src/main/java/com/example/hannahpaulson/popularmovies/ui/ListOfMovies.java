@@ -45,7 +45,7 @@ public class ListOfMovies extends AppCompatActivity {
         gridView = findViewById(R.id.gridview);
 
         if (!isNetworkAvailable()) {
-            Toast.makeText(ListOfMovies.this.getApplicationContext(), "You are offline", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ListOfMovies.this.getApplicationContext(), R.string.offline, Toast.LENGTH_SHORT).show();
         } else {
             getPopularMovies();
         }
@@ -114,12 +114,20 @@ public class ListOfMovies extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_popular) {
-            getPopularMovies();
-            return true;
+            if (!isNetworkAvailable()) {
+                Toast.makeText(ListOfMovies.this.getApplicationContext(), R.string.offline, Toast.LENGTH_SHORT).show();
+            } else {
+                getPopularMovies();
+                return true;
+            }
         }
         if (id == R.id.action_top_rated) {
-            getHighestRated();
-            return true;
+            if (!isNetworkAvailable()) {
+                Toast.makeText(ListOfMovies.this.getApplicationContext(), R.string.offline, Toast.LENGTH_SHORT).show();
+            } else {
+                getHighestRated();
+                return true;
+            }
         }
 
         return super.onOptionsItemSelected(item);
