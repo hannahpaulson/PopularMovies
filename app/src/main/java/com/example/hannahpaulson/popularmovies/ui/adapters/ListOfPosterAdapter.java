@@ -49,7 +49,7 @@ public class ListOfPosterAdapter extends ArrayAdapter {
         }
 
         final ImageView imageView = (ImageView) convertView.findViewById(R.id.grid_item_poster);
-        Picasso.get().load("http://image.tmdb.org/t/p/w500/" + movie.getPosterPath())
+        Picasso.get().load("http://image.tmdb.org/t/p/w780/" + movie.getPosterPath())
                 .into(imageView);
 
         return convertView;

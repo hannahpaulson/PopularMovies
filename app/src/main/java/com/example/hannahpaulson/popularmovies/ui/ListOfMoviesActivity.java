@@ -28,7 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ListOfMoviesActivity extends AppCompatActivity {
-    private final String TAG = getPackageName();
+    private final String TAG = ListOfMoviesActivity.class.getName();
     private GridView gridView;
 
 
@@ -96,7 +96,7 @@ public class ListOfMoviesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Movie movie = movies.get(i);
-                Intent intent = new Intent(ListOfMoviesActivity.this, MovieDetailActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MovieDetailActivity.class);
                 intent.putExtra("MOVIEID", movie.getId().toString());
                 startActivity(intent);
             }
@@ -119,22 +119,17 @@ public class ListOfMoviesActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_popular) {
-            if (!isNetworkAvailable()) {
-                Toast.makeText(ListOfMoviesActivity.this.getApplicationContext(), R.string.offline, Toast.LENGTH_SHORT).show();
-            } else {
-                getPopularMovies();
-                return true;
+        if (isNetworkAvailable()) {
+            switch (id) {
+                case R.id.action_popular:
+                    getPopularMovies();
+                    break;
+                case R.id.action_top_rated:
+                    getHighestRated();
+                    break;
             }
-        }
-        if (id == R.id.action_top_rated) {
-            if (!isNetworkAvailable()) {
-                Toast.makeText(ListOfMoviesActivity.this.getApplicationContext(), R.string.offline, Toast.LENGTH_SHORT).show();
-            } else {
-                getHighestRated();
-                return true;
-            }
+        } else {
+            Toast.makeText(getApplicationContext(), R.string.offline, Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
