@@ -1,3 +1,11 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="padding">12dp</dimen>
+
+    <dimen name="banner_height">250dp</dimen>
+
+    <dimen name="margins">12dp</dimen>
+    <dimen name="poster_margin">150dp</dimen>
+
+    <dimen name="large_evelvation">12dp</dimen>
+    <dimen name="extra_small_elevation">4dp</dimen>
 </resources>

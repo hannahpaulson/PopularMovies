@@ -20,16 +20,16 @@
             <ImageView
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="@dimen/banner_height"
                 android:scaleType="centerCrop" />
 
             <LinearLayout
                 android:id="@+id/move_poster_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginStart="12dp"
-                android:elevation="12dp"
+                android:layout_marginLeft="@dimen/margins"
+                android:layout_marginStart="@dimen/margins"
+                android:elevation="@dimen/large_evelvation"
                 android:orientation="vertical"
                 tools:targetApi="lollipop">
 
@@ -37,10 +37,9 @@
                     android:id="@+id/movie_poster"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="150dp"
+                    android:layout_marginTop="@dimen/poster_margin"
                     android:adjustViewBounds="true"
                     android:clickable="false"
-                    android:elevation="12dp"
                     tools:targetApi="lollipop" />
 
                 <RatingBar
@@ -48,7 +47,7 @@
                     style="@style/Base.Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/margins"
                     android:isIndicator="true"
                     android:numStars="5"
                     android:stepSize="0.1" />
@@ -62,19 +61,19 @@
                 android:layout_toEndOf="@id/move_poster_rating"
                 android:layout_toRightOf="@id/move_poster_rating"
                 android:orientation="vertical"
-                android:padding="12dp">
+                android:padding="@dimen/padding">
 
                 <TextView
                     android:id="@+id/movie_title"
+                    style="@style/Base.TextAppearance.AppCompat.Headline"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/Base.TextAppearance.AppCompat.Headline"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/movie_tag_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/movie_release_date"
@@ -89,15 +88,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/move_poster_rating"
-                android:elevation="4dp"
+                android:elevation="@dimen/extra_small_elevation"
                 tools:ignore="UnusedAttribute">
 
                 <TextView
                     android:id="@+id/movie_summary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:padding="12dp" />
+                    android:layout_marginTop="@dimen/margins"
+                    android:padding="@dimen/padding" />
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
