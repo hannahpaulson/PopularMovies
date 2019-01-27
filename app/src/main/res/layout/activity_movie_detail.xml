@@ -74,9 +74,7 @@
                 android:id="@+id/movie_summary_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/banner"
-                android:layout_toEndOf="@id/move_poster_rating"
-                android:layout_toRightOf="@id/move_poster_rating"
+                android:layout_below="@id/move_poster_rating"
                 android:elevation="4dp"
                 tools:ignore="UnusedAttribute">
 
