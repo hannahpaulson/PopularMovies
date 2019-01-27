@@ -19,7 +19,7 @@ import com.example.hannahpaulson.popularmovies.R;
 import com.example.hannahpaulson.popularmovies.api.RestClient;
 import com.example.hannahpaulson.popularmovies.data.Movie;
 import com.example.hannahpaulson.popularmovies.data.Results;
-import com.example.hannahpaulson.popularmovies.ui.adapters.ListOfPosterAdapter;
+import com.example.hannahpaulson.popularmovies.ui.adapters.MoviesAdapter;
 
 import java.util.List;
 
@@ -27,8 +27,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListOfMoviesActivity extends AppCompatActivity {
-    private final String TAG = ListOfMoviesActivity.class.getName();
+public class MoviesActivity extends AppCompatActivity {
+    private final String TAG = MoviesActivity.class.getName();
     private GridView gridView;
 
 
@@ -51,6 +51,15 @@ public class ListOfMoviesActivity extends AppCompatActivity {
 
     private void getPopularMovies() {
         Call<Results> call = RestClient.get().popularMovies();
+        getCallResponseAndPopulateGrid(call);
+    }
+
+    private void getHighestRated() {
+        Call<Results> call = RestClient.get().highestRated();
+        getCallResponseAndPopulateGrid(call);
+    }
+
+    private void getCallResponseAndPopulateGrid(Call<Results> call) {
         call.enqueue(new Callback<Results>() {
             @Override
             public void onResponse(Call<Results> call, Response<Results> response) {
@@ -69,29 +78,9 @@ public class ListOfMoviesActivity extends AppCompatActivity {
         });
     }
 
-    private void getHighestRated() {
-        Call<Results> call = RestClient.get().highestRated();
-        call.enqueue(new Callback<Results>() {
-            @Override
-            public void onResponse(Call<Results> call, Response<Results> response) {
-                if (response.isSuccessful()) {
-                    List<Movie> movies = response.body().getResults();
-                    populateGridView(movies);
-                } else {
-                    Log.e(TAG, response.errorBody().toString() + "");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Results> call, Throwable t) {
-                Log.e(TAG, t.getMessage());
-            }
-        });
-    }
-
     private void populateGridView(final List<Movie> movies) {
-        ListOfPosterAdapter listOfPosterAdapter = new ListOfPosterAdapter(ListOfMoviesActivity.this, movies);
-        gridView.setAdapter(listOfPosterAdapter);
+        MoviesAdapter moviesAdapter = new MoviesAdapter(MoviesActivity.this, movies);
+        gridView.setAdapter(moviesAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -101,7 +90,6 @@ public class ListOfMoviesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        listOfPosterAdapter.notifyDataSetChanged();
 
     }
 
@@ -137,7 +125,7 @@ public class ListOfMoviesActivity extends AppCompatActivity {
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
-                = (ConnectivityManager) ListOfMoviesActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
+                = (ConnectivityManager) MoviesActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
