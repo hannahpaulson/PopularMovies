@@ -14,7 +14,8 @@ public class RestClient {
         setupRestClient();
     }
 
-    public RestClient() {}
+    public RestClient() {
+    }
 
     public static MovieAPI get() {
         return movieAPI;

@@ -5,15 +5,15 @@
     tools:context=".ui.MovieDetailActivity">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Fragments.MovieDetailFragment"
-        android:id="@+id/scrollView"
-        >
+        tools:context=".Fragments.MovieDetailFragment">
 
-        <RelativeLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <RelativeLayout
             android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:padding="12dp">
 
             <ImageView
@@ -22,30 +22,33 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:paddingLeft="16dp"
-                android:paddingTop="16dp"
-                />
+                android:paddingTop="16dp" />
 
-            <LinearLayout android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/movie_text_info"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="25dp"
+                android:layout_below="@+id/movie_poster"
                 android:gravity="right"
                 android:orientation="vertical"
-                android:id="@+id/movie_text_info"
-                android:layout_below="@+id/movie_poster">
+                android:paddingTop="25dp">
+
                 <TextView
                     android:id="@+id/movie_release_date"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
+
                 <TextView
                     android:id="@+id/movie_rate_text"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
             </LinearLayout>
+
             <TextView
                 android:id="@+id/movie_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/movie_text_info"/>
+                android:layout_below="@+id/movie_text_info" />
         </RelativeLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

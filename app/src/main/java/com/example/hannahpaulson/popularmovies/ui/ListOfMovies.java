@@ -50,42 +50,42 @@ public class ListOfMovies extends AppCompatActivity {
         }
     }
 
-    private void getPopularMovies(){
+    private void getPopularMovies() {
         Call<Results> call = RestClient.get().popularMovies();
         call.enqueue(new Callback<Results>() {
             @Override
             public void onResponse(Call<Results> call, Response<Results> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     List<Movie> movies = response.body().getResults();
                     populateGridView(movies);
                 } else {
-                    Log.e(TAG,response.errorBody()+"");
+                    Log.e(TAG, response.errorBody().toString());
                 }
             }
 
             @Override
             public void onFailure(Call<Results> call, Throwable t) {
-                Log.e(TAG,t.getMessage());
+                Log.e(TAG, t.getMessage());
             }
         });
     }
 
-    private void getHighestRated(){
+    private void getHighestRated() {
         Call<Results> call = RestClient.get().highestRated();
         call.enqueue(new Callback<Results>() {
             @Override
             public void onResponse(Call<Results> call, Response<Results> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     List<Movie> movies = response.body().getResults();
                     populateGridView(movies);
                 } else {
-                    Log.e(TAG,response.errorBody()+"");
+                    Log.e(TAG, response.errorBody().toString() + "");
                 }
             }
 
             @Override
             public void onFailure(Call<Results> call, Throwable t) {
-                Log.e(TAG,t.getMessage());
+                Log.e(TAG, t.getMessage());
             }
         });
     }

@@ -28,6 +28,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     private TextView releaseDate;
     private TextView ratingValue;
     private TextView summaryText;
+    private TextView movieTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     }
 
     private void displayMovieDetails(MovieDetails details) {
+        setTitle(details.getTitle());
         Picasso.get()
                 .load("http://image.tmdb.org/t/p/w780/" + details.getPosterPath())
                 .into(posterImage);
