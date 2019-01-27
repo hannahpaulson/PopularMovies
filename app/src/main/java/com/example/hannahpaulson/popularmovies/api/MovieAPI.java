@@ -1,7 +1,7 @@
-package com.example.hannahpaulson.popularmovies.data;
+package com.example.hannahpaulson.popularmovies.api;
 
-import com.example.hannahpaulson.popularmovies.data.datapojo.MovieDetails;
-import com.example.hannahpaulson.popularmovies.data.datapojo.Results;
+import com.example.hannahpaulson.popularmovies.data.MovieDetails;
+import com.example.hannahpaulson.popularmovies.data.Results;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

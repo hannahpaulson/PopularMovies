@@ -27,8 +27,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListOfMovies extends AppCompatActivity {
-    private static final String TAG = ListOfMovies.class.getName();
+public class ListOfMoviesActivity extends AppCompatActivity {
+    private final String TAG = getPackageName();
     ListOfPosterAdapter listOfPosterAdapter;
     GridView gridView;
 
@@ -91,13 +91,13 @@ public class ListOfMovies extends AppCompatActivity {
     }
 
     private void populateGridView(final List<Movie> movies) {
-        listOfPosterAdapter = new ListOfPosterAdapter(ListOfMovies.this, movies);
+        listOfPosterAdapter = new ListOfPosterAdapter(ListOfMoviesActivity.this, movies);
         gridView.setAdapter(listOfPosterAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Movie movie = movies.get(i);
-                Intent intent = new Intent(ListOfMovies.this, MovieDetailActivity.class);
+                Intent intent = new Intent(ListOfMoviesActivity.this, MovieDetailActivity.class);
                 intent.putExtra("MOVIEID", movie.getId().toString());
                 startActivity(intent);
             }
@@ -123,7 +123,7 @@ public class ListOfMovies extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_popular) {
             if (!isNetworkAvailable()) {
-                Toast.makeText(ListOfMovies.this.getApplicationContext(), R.string.offline, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListOfMoviesActivity.this.getApplicationContext(), R.string.offline, Toast.LENGTH_SHORT).show();
             } else {
                 getPopularMovies();
                 return true;
@@ -131,7 +131,7 @@ public class ListOfMovies extends AppCompatActivity {
         }
         if (id == R.id.action_top_rated) {
             if (!isNetworkAvailable()) {
-                Toast.makeText(ListOfMovies.this.getApplicationContext(), R.string.offline, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListOfMoviesActivity.this.getApplicationContext(), R.string.offline, Toast.LENGTH_SHORT).show();
             } else {
                 getHighestRated();
                 return true;
@@ -143,7 +143,7 @@ public class ListOfMovies extends AppCompatActivity {
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
-                = (ConnectivityManager) ListOfMovies.this.getSystemService(Context.CONNECTIVITY_SERVICE);
+                = (ConnectivityManager) ListOfMoviesActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
