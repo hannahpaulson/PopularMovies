@@ -1,22 +1,21 @@
 package com.example.hannahpaulson.popularmovies.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.hannahpaulson.popularmovies.R;
-import com.example.hannahpaulson.popularmovies.data.MovieAPI;
 import com.example.hannahpaulson.popularmovies.data.RestClient;
 import com.example.hannahpaulson.popularmovies.data.datapojo.Movie;
 import com.example.hannahpaulson.popularmovies.data.datapojo.Results;
@@ -91,9 +90,18 @@ public class ListOfMovies extends AppCompatActivity {
         });
     }
 
-    private void populateGridView(List<Movie> movies) {
+    private void populateGridView(final List<Movie> movies) {
         listOfPosterAdapter = new ListOfPosterAdapter(ListOfMovies.this, movies);
         gridView.setAdapter(listOfPosterAdapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Movie movie = movies.get(i);
+                Intent intent = new Intent(ListOfMovies.this, MovieDetailActivity.class);
+                intent.putExtra("MOVIEID", movie.getId().toString());
+                startActivity(intent);
+            }
+        });
         listOfPosterAdapter.notifyDataSetChanged();
 
     }
