@@ -5,10 +5,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hannahpaulson.popularmovies.R;
 import com.example.hannahpaulson.popularmovies.api.RestClient;
@@ -21,11 +21,15 @@ import retrofit2.Response;
 
 public class MovieDetailActivity extends AppCompatActivity {
     private String TAG = MovieDetailActivity.class.getName();
+
     private final String MOVIE_ID = "MOVIEID";
     private String movieID;
+
     private ImageView posterImage;
     private ImageView bannerImage;
 
+    private TextView movieTitle;
+    private TextView movieTagLine;
     private TextView releaseDate;
     private TextView summaryText;
 
@@ -42,9 +46,11 @@ public class MovieDetailActivity extends AppCompatActivity {
         posterImage = findViewById(R.id.movie_poster);
         bannerImage = findViewById(R.id.banner);
 
+        movieTagLine = findViewById(R.id.movie_tag_line);
         releaseDate = findViewById(R.id.movie_release_date);
         summaryText = findViewById(R.id.movie_summary);
         ratingBar = findViewById(R.id.rating_bar);
+        movieTitle = findViewById(R.id.movie_title);
 
         Intent intent = this.getIntent();
         movieID = intent.getStringExtra(MOVIE_ID);
@@ -61,12 +67,14 @@ public class MovieDetailActivity extends AppCompatActivity {
                     displayMovieDetails(details);
                 } else {
                     Log.e(TAG, response.errorBody() + "");
+                    Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<MovieDetails> call, Throwable t) {
                 Log.e(TAG, t.getMessage());
+                Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -75,8 +83,9 @@ public class MovieDetailActivity extends AppCompatActivity {
     private void displayMovieDetails(MovieDetails details) {
         setTitle(details.getTitle());
         releaseDate.setText("Release Date: " + details.getReleaseDate());
+        movieTitle.setText(details.getTitle());
+        movieTagLine.setText(details.getTagline());
         ratingBar.setNumStars(10);
-        Log.i("rating value", details.getVoteAverage().toString());
         ratingBar.setRating(details.getVoteAverage());
         summaryText.setText(details.getOverview());
 

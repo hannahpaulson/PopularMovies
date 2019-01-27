@@ -4,5 +4,6 @@
     <string name="action_top_rated">Top Rated</string>
     <string name="action_popular">Popular</string>
     <string name="content_poster_description">Movie posters</string>
-    <string name="offline">"You are offline"</string>
+    <string name="offline">You are offline</string>
+    <string name="error">Something has gone wrong</string>
 </resources>

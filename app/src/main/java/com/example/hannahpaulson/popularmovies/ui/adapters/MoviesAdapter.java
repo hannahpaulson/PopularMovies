@@ -13,12 +13,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ListOfPosterAdapter extends ArrayAdapter {
+public class MoviesAdapter extends ArrayAdapter {
 
     private Context context;
     private List<Movie> movies;
 
-    public ListOfPosterAdapter(Context context, List<Movie> movies) {
+    public MoviesAdapter(Context context, List<Movie> movies) {
         super(context, 0, movies);
         this.context = context;
         this.movies = movies;

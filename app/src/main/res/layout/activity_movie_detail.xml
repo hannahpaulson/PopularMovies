@@ -60,13 +60,27 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/banner"
                 android:layout_toEndOf="@id/move_poster_rating"
-                android:layout_toRightOf="@id/move_poster_rating">
+                android:layout_toRightOf="@id/move_poster_rating"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/movie_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Base.TextAppearance.AppCompat.Headline"/>
+
+                <TextView
+                    android:id="@+id/movie_tag_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/movie_release_date"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="24dp" />
+                    android:layout_height="wrap_content" />
+
 
             </LinearLayout>
 

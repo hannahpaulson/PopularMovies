@@ -42,10 +42,10 @@ public class MoviesActivity extends AppCompatActivity {
 
         gridView = findViewById(R.id.gridview);
 
-        if (!isNetworkAvailable()) {
-            Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
-        } else {
+        if (isNetworkAvailable()) {
             getPopularMovies();
+        } else {
+            Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -68,18 +68,20 @@ public class MoviesActivity extends AppCompatActivity {
                     populateGridView(movies);
                 } else {
                     Log.e(TAG, response.errorBody().toString());
+                    Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Results> call, Throwable t) {
                 Log.e(TAG, t.getMessage());
+                Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void populateGridView(final List<Movie> movies) {
-        MoviesAdapter moviesAdapter = new MoviesAdapter(MoviesActivity.this, movies);
+        MoviesAdapter moviesAdapter = new MoviesAdapter(this, movies);
         gridView.setAdapter(moviesAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
