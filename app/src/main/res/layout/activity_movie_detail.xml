@@ -1,7 +1,8 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.MovieDetailActivity">
 
     <ScrollView
@@ -13,42 +14,79 @@
         <RelativeLayout
             android:id="@+id/details"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp">
+            android:layout_height="wrap_content">
+
 
             <ImageView
-                android:id="@+id/movie_poster"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:paddingLeft="16dp"
-                android:paddingTop="16dp" />
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop" />
 
             <LinearLayout
-                android:id="@+id/movie_text_info"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/movie_poster"
-                android:gravity="right"
+                android:id="@+id/move_poster_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
+                android:elevation="12dp"
                 android:orientation="vertical"
-                android:paddingTop="25dp">
+                tools:targetApi="lollipop">
+
+                <ImageView
+                    android:id="@+id/movie_poster"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="150dp"
+                    android:adjustViewBounds="true"
+                    android:clickable="false"
+                    android:elevation="12dp"
+                    tools:targetApi="lollipop" />
+
+                <RatingBar
+                    android:id="@+id/rating_bar"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/move_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/banner"
+                android:layout_toEndOf="@id/move_poster_rating"
+                android:layout_toRightOf="@id/move_poster_rating">
 
                 <TextView
                     android:id="@+id/movie_release_date"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:padding="24dp" />
 
-                <TextView
-                    android:id="@+id/movie_rate_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/movie_summary"
+            <LinearLayout
+                android:id="@+id/movie_summary_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/movie_text_info" />
+                android:layout_below="@id/banner"
+                android:layout_toEndOf="@id/move_poster_rating"
+                android:layout_toRightOf="@id/move_poster_rating"
+                android:elevation="4dp"
+                tools:ignore="UnusedAttribute">
+
+                <TextView
+                    android:id="@+id/movie_summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:padding="12dp" />
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
