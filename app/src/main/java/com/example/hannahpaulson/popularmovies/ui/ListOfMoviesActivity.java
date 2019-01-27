@@ -29,8 +29,7 @@ import retrofit2.Response;
 
 public class ListOfMoviesActivity extends AppCompatActivity {
     private final String TAG = getPackageName();
-    ListOfPosterAdapter listOfPosterAdapter;
-    GridView gridView;
+    private GridView gridView;
 
 
     @Override
@@ -91,7 +90,7 @@ public class ListOfMoviesActivity extends AppCompatActivity {
     }
 
     private void populateGridView(final List<Movie> movies) {
-        listOfPosterAdapter = new ListOfPosterAdapter(ListOfMoviesActivity.this, movies);
+        ListOfPosterAdapter listOfPosterAdapter = new ListOfPosterAdapter(ListOfMoviesActivity.this, movies);
         gridView.setAdapter(listOfPosterAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
