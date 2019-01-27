@@ -1,5 +1,6 @@
-package com.example.hannahpaulson.popularmovies.data;
+package com.example.hannahpaulson.popularmovies.api;
 
+import com.example.hannahpaulson.popularmovies.api.MovieAPI;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

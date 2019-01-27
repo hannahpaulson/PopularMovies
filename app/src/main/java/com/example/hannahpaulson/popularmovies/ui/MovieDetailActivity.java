@@ -8,13 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hannahpaulson.popularmovies.R;
-import com.example.hannahpaulson.popularmovies.data.RestClient;
-import com.example.hannahpaulson.popularmovies.data.datapojo.Movie;
-import com.example.hannahpaulson.popularmovies.data.datapojo.MovieDetails;
-import com.example.hannahpaulson.popularmovies.data.datapojo.Results;
+import com.example.hannahpaulson.popularmovies.api.RestClient;
+import com.example.hannahpaulson.popularmovies.data.MovieDetails;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

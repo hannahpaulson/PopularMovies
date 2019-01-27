@@ -1,4 +1,4 @@
-package com.example.hannahpaulson.popularmovies.data.datapojo;
+package com.example.hannahpaulson.popularmovies.data;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

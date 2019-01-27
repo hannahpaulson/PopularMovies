@@ -16,9 +16,9 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.hannahpaulson.popularmovies.R;
-import com.example.hannahpaulson.popularmovies.data.RestClient;
-import com.example.hannahpaulson.popularmovies.data.datapojo.Movie;
-import com.example.hannahpaulson.popularmovies.data.datapojo.Results;
+import com.example.hannahpaulson.popularmovies.api.RestClient;
+import com.example.hannahpaulson.popularmovies.data.Movie;
+import com.example.hannahpaulson.popularmovies.data.Results;
 import com.example.hannahpaulson.popularmovies.ui.adapters.ListOfPosterAdapter;
 
 import java.util.List;
@@ -44,7 +44,7 @@ public class ListOfMovies extends AppCompatActivity {
         gridView = findViewById(R.id.gridview);
 
         if (!isNetworkAvailable()) {
-            Toast.makeText(ListOfMovies.this.getApplicationContext(), R.string.offline, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
         } else {
             getPopularMovies();
         }

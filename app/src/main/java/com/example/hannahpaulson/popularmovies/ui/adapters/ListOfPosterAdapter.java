@@ -1,7 +1,6 @@
 package com.example.hannahpaulson.popularmovies.ui.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
 import com.example.hannahpaulson.popularmovies.R;
-import com.example.hannahpaulson.popularmovies.data.datapojo.Movie;
+import com.example.hannahpaulson.popularmovies.data.Movie;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
